@@ -6,13 +6,13 @@ Deploys a log analytics workspace for collecting all diagnostics logs and metric
 
 Not all options are available in terraform yet. To collect Azure Activity logs additional configuration is required after deployment.
 
-Open deployed log analytics workspace and go to "Workspace Data Sources" -> "Azure Activity log" and connect to all subscriptions.
+Open deployed log analytics workspace and go to "Workspace Data Sources" -> "Azure Activity log" and connect to subscriptions that should collect activity logs.
 
 ## Usage
 
 ```terraform
-module "workspace" {
-    source = "avinor/"
+module "workspace" {
+    source = "avinor/log-analytics/azurerm"
 }
 ```
 

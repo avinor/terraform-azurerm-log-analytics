@@ -17,7 +17,7 @@ variable "retention_in_days" {
 }
 
 variable "security_center_subscription" {
-  description = "List of subscriptions this log analytics should collect data for."
+  description = "List of subscriptions this log analytics should collect data for. Does not work on free subscription."
   type        = list(string)
   default     = []
 }
