@@ -6,6 +6,10 @@ variable "resource_group" {
   description = "Name of resource group to deploy resources in."
 }
 
+variable "location" {
+  description = "Azure location where resources should be deployed."
+}
+
 variable "sku" {
   description = "Specified the Sku of the Log Analytics Workspace."
   default     = "PerNode"
@@ -26,11 +30,6 @@ variable "solutions" {
   description = "A list of solutions to add to the workspace. Should contain solution_name, publisher and product."
   type        = list(object({ solution_name = string, publisher = string, product = string }))
   default     = []
-}
-
-variable "lock" {
-  description = "Add a lock on resource group as part of deployment."
-  default     = false
 }
 
 variable "tags" {

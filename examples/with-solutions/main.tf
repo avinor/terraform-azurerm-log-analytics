@@ -3,6 +3,7 @@ module "workspace" {
 
     name = "common"
     resource_group = "test"
+    location = "westeurope"
 
     solutions = [
         {
