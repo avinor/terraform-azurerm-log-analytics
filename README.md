@@ -13,17 +13,45 @@ Open deployed log analytics workspace and go to "Workspace Data Sources" -> "Azu
 ```terraform
 module "workspace" {
     source = "avinor/log-analytics/azurerm"
+    version = "1.0.0"
+
+    name = "logs"
+    resource_group_name = "logs-rg"
+    location = "westeurope"
 }
 ```
 
-It comes pre-configured with following workspaces:
+To add solutions to the workspace use the solutions variable to define solution name, publisher and product.
 
-- Antimalware Assessment
-- Azure Activity Logs
-- Azure Application Gateway Analytics
-- Container Monitoring Solution
-- Key Vault Analytics
-- Network Performance Monitor
-- Security and Audit
+```terraform
+module "workspace" {
+    source = "avinor/log-analytics/azurerm"
+    version = "1.0.0"
 
-In addition it is recommended to install the [Azure Firewall sample workspace](https://docs.microsoft.com/en-us/azure/firewall/log-analytics-samples) for viewing firewall logs.
+    name = "logs"
+    resource_group_name = "logs-rg"
+    location = "westeurope"
+
+    solutions = [
+        {
+            solution_name = "ContainerInsights",
+            publisher = "Microsoft",
+            product = "OMSGallery/ContainerInsights",
+        },
+    ]
+}
+```
+
+Some of the solutions that can be added:
+
+| solution_name | publisher | product |
+|---------------|-----------|---------|
+| ContainerInsights | Microsoft | OMSGallery/ContainerInsights |
+| AzureAppGatewayAnalytics | Microsoft | OMSGallery/AzureAppGatewayAnalytics |
+| AzureActivity | Microsoft | OMSGallery/AzureActivity |
+| Security | Microsoft | OMSGallery/Security |
+| KeyVaultAnalytics | Microsoft | OMSGallery/KeyVaultAnalytics |
+| AntiMalware | Microsoft | OMSGallery/AntiMalware |
+| NetworkMonitoring | Microsoft | OMSGallery/NetworkMonitoring |
+
+In addition if using Azure Firewall install the [Azure Firewall sample workspace](https://docs.microsoft.com/en-us/azure/firewall/log-analytics-samples) for viewing firewall logs.

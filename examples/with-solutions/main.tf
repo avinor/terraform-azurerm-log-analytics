@@ -2,7 +2,7 @@ module "workspace" {
     source = "../../"
 
     name = "common"
-    resource_group = "test"
+    resource_group_name = "test"
     location = "westeurope"
 
     solutions = [
@@ -10,6 +10,6 @@ module "workspace" {
             solution_name = "ContainerInsights",
             publisher = "Microsoft",
             product = "OMSGallery/ContainerInsights",
-        }
+        },
     ]
 }
