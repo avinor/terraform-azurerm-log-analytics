@@ -10,11 +10,15 @@ Open deployed log analytics workspace and go to "Workspace Data Sources" -> "Azu
 
 ## Usage
 
-```terraform
-module "workspace" {
-    source = "avinor/log-analytics/azurerm"
-    version = "1.0.0"
+Example using [tau](https://github.com/avinor/tau) for deployment
 
+```terraform
+module {
+    source = "avinor/log-analytics/azurerm"
+    version = "1.1.0"
+}
+
+inputs {
     name = "logs"
     resource_group_name = "logs-rg"
     location = "westeurope"
@@ -24,10 +28,12 @@ module "workspace" {
 To add solutions to the workspace use the solutions variable to define solution name, publisher and product.
 
 ```terraform
-module "workspace" {
+module {
     source = "avinor/log-analytics/azurerm"
-    version = "1.0.0"
+    version = "1.1.0"
+}
 
+inputs {
     name = "logs"
     resource_group_name = "logs-rg"
     location = "westeurope"
