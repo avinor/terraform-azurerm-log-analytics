@@ -9,6 +9,13 @@ resource "azurerm_resource_group" "logs" {
   tags = var.tags
 }
 
+resource "azurerm_role_assignment" "logs" {
+  count                = length(var.contributors)
+  scope                = azurerm_resource_group.logs.id
+  role_definition_name = "Log Analytics Contributor"
+  principal_id         = var.contributors[count.index]
+}
+
 resource "azurerm_log_analytics_workspace" "logs" {
   name                = "${var.name}-logs"
   location            = azurerm_resource_group.logs.location

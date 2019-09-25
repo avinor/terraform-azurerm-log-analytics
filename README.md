@@ -48,6 +48,8 @@ inputs {
 }
 ```
 
+## Solutions
+
 Some of the solutions that can be added:
 
 | solution_name | publisher | product |
@@ -61,3 +63,7 @@ Some of the solutions that can be added:
 | NetworkMonitoring | Microsoft | OMSGallery/NetworkMonitoring |
 
 In addition if using Azure Firewall install the [Azure Firewall sample workspace](https://docs.microsoft.com/en-us/azure/firewall/log-analytics-samples) for viewing firewall logs.
+
+## Contributors
+
+If sharing a log analytics instance with other subscriptions it might be required to assign `Log Analytics Contributor` access to other service principals. Use the `contributor` input variable to assign access to other users / apps. This should be a list of object_ids.

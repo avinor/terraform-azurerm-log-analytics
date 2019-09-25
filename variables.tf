@@ -32,6 +32,12 @@ variable "solutions" {
   default     = []
 }
 
+variable "contributors" {
+  description = "A list of users / apps that should have Log Analytics Contributer access. Required to use log analytics as log source."
+  type        = list(string)
+  default     = []
+}
+
 variable "tags" {
   description = "Tags to apply to all resources created."
   type        = map(string)
