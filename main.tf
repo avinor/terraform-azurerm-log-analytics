@@ -1,8 +1,10 @@
 terraform {
   required_version = ">= 0.12.0"
-  required_providers {
-    azurerm = "~> 1.44.0"
-  }
+}
+
+provider "azurerm" {
+  version = "~> 2.49.0"
+  features {}
 }
 
 resource "azurerm_resource_group" "logs" {
@@ -47,4 +49,6 @@ resource "azurerm_log_analytics_solution" "logs" {
     publisher = var.solutions[count.index].publisher
     product   = var.solutions[count.index].product
   }
+
+  tags = var.tags
 }
